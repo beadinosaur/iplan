@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: planapp
+  profiles:
+    active: dev
+  jackson:
+    time-zone: GMT+8
+
+server:
+  servlet:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+  port: 8081
+  tomcat:
+    uri-encoding: UTF-8
+    basedir: ../tmp/tomcat.${spring.application.name}.${server.port}
+
+mybatis:
+  mapper-locations: classpath:mybatis/mapper/*.xml
+  type-aliases-package: com.schedule.getmail.entity
+  config-location: classpath:mybatis/mybatis-config.xml
+
+logging:
+  file:
+    path: logs
+
+swagger:
+  enable: true
+
+#Print the sql execution entry
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
