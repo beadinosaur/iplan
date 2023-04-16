@@ -41,7 +41,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         int flag = 0;
         UserVo userVo =new UserVo();
         //generate random id
-        String randomId = String.valueOf((Math.random()*9+1)*Math.pow(10,10-1));
+        String randomId = String.valueOf((long) ((Math.random() * 9 + 1) * Math.pow(10, 10 - 1)));
         User user_db = userMapper.selectOne(new QueryWrapper<User>()
                 .lambda()
                 .eq(User::getUserId,randomId)
@@ -63,6 +63,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
          }
         return userVo;
     }
+
     /**
      *  user signIn
      * @param req
