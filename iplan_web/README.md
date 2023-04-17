@@ -1,4 +1,4 @@
-# iplan1
+# iplan
 
 ## Project setup
 ```
