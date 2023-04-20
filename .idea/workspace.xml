@@ -4,14 +4,70 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="30cb2c86-710d-4d32-9676-323fed100c06" name="Changes" comment="" />
+    <list default="true" id="30cb2c86-710d-4d32-9676-323fed100c06" name="Changes" comment="20230414-BD20231021-search the day’s schedule-xieguangwei">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iplan-todolist/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iplan-todolist/babel.config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iplan-todolist/dist/css/chunk-vendors.ab49d789.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iplan-todolist/dist/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iplan-todolist/dist/fonts/element-icons.f1a45d74.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iplan-todolist/dist/fonts/element-icons.ff18efd1.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iplan-todolist/dist/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iplan-todolist/dist/js/app.98758b0e.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iplan-todolist/dist/js/app.98758b0e.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iplan-todolist/dist/js/chunk-vendors.9abdb451.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iplan-todolist/dist/js/chunk-vendors.9abdb451.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iplan-todolist/jsconfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iplan-todolist/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iplan-todolist/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iplan-todolist/public/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iplan-todolist/public/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iplan-todolist/src/App.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iplan-todolist/src/assets/images/user.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iplan-todolist/src/assets/images/user1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iplan-todolist/src/assets/images/user2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iplan-todolist/src/assets/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iplan-todolist/src/components/CalendarBox.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iplan-todolist/src/components/ClockIn.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iplan-todolist/src/components/CommonAside.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iplan-todolist/src/components/CommonHeader.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iplan-todolist/src/components/EditTodo.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iplan-todolist/src/components/HelloWorld.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iplan-todolist/src/components/Popup.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iplan-todolist/src/components/StatusBar.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iplan-todolist/src/components/TodoContent.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iplan-todolist/src/main.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iplan-todolist/src/router/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iplan-todolist/src/store/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iplan-todolist/src/store/tab.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iplan-todolist/src/views/Home.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iplan-todolist/src/views/Main.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iplan-todolist/src/views/Mall.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iplan-todolist/src/views/MyTodo.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iplan-todolist/src/views/Page1.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iplan-todolist/src/views/Page2.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iplan-todolist/src/views/User.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iplan-todolist/vue.config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iplan-todolist/yarn.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iplan_web/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/iplan_web/package-lock.json" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
@@ -25,14 +81,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "E:/UNREMITTING/iplan"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/UNREMITTING/tmp/iplan&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;da8536609199bd54f94645cb22876c12&quot;
   }
-}]]></component>
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.example.iplan_data.bean.response" />
+      <recent name="com.example.iplan_data.bean.request" />
+      <recent name="com.example.iplan_data.service.Impl" />
+      <recent name="com.example.iplan_data.service" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="IplanDataApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="iplan_data" />
@@ -51,7 +120,30 @@
       <option name="presentableId" value="Default" />
       <updated>1678631217736</updated>
       <workItem from="1678631219374" duration="2557000" />
+      <workItem from="1680103855133" duration="1070000" />
+      <workItem from="1681280099183" duration="160000" />
+      <workItem from="1681472578164" duration="2915000" />
+      <workItem from="1681483611034" duration="795000" />
+      <workItem from="1681638442301" duration="1845000" />
+      <workItem from="1681640324193" duration="3622000" />
+      <workItem from="1681644487795" duration="988000" />
+      <workItem from="1681646025713" duration="9481000" />
     </task>
+    <task id="LOCAL-00001" summary="2023/3/29-Project plan and presentation PPT">
+      <created>1680104352085</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1680104352085</updated>
+    </task>
+    <task id="LOCAL-00002" summary="20230414-BD20231021-search the day’s schedule-xieguangwei">
+      <created>1681484247634</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1681484247634</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -67,5 +159,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="2023/3/29-Project plan and presentation PPT" />
+    <MESSAGE value="20230414-BD20231021-search the day’s schedule-xieguangwei" />
+    <option name="LAST_COMMIT_MESSAGE" value="20230414-BD20231021-search the day’s schedule-xieguangwei" />
   </component>
 </project>
