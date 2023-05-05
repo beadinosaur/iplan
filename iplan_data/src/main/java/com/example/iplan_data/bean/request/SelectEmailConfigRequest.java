@@ -5,21 +5,15 @@ import lombok.Data;
 import org.hibernate.validator.constraints.NotBlank;
 
 /**
- * delete planData request
+ * request
  */
 @Data
-public class DeleteDailyPlanRequest {
+public class SelectEmailConfigRequest {
+
     /**
      * Belonging user
      */
-    @ApiModelProperty("userName")
+    @ApiModelProperty("username")
     @NotBlank(message = "not null")
     String userName;
-
-    /**
-     * planId
-     */
-    @ApiModelProperty("planId")
-    @NotBlank(message = "not null")
-    String planId;
 }

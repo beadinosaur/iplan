@@ -39,16 +39,18 @@ public class DateUtil {
      * Convert to date in full format yyyy-MM-dd HH:mm:ss
      * </p>
      *
-     * @param date
+     * @param dateStr
      * @return
      */
-    public static Date fullParse(String date) {
-        if (CheckUtil.isEmpty(date)) {
+    public static Date fullParse(String dateStr) {
+        Date date;
+        if (CheckUtil.isEmpty(dateStr)) {
             return null;
         }
         SimpleDateFormat dateFormat = new SimpleDateFormat(FULL_DATE);
         try {
-            return dateFormat.parse(date);
+            date = dateFormat.parse(dateStr);
+            return date;
         } catch (ParseException e) {
             return new Date();
         }

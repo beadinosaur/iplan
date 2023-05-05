@@ -1,21 +1,17 @@
-package com.example.iplan_data.bean.request;
+package com.example.iplan_data.entity.vo;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import org.hibernate.validator.constraints.NotBlank;
 
-import java.util.Date;
-
-/**
- * add planData request
- */
 @Data
-public class AddDailyPlanRequest {
+public class PlanDataVo {
 
     /**
      * Belonging user
      */
     @ApiModelProperty("username")
+    @NotBlank(message = "not null")
     private String userName;
 
     /**
@@ -34,6 +30,7 @@ public class AddDailyPlanRequest {
      * topic
      */
     @ApiModelProperty("topic")
+    @NotBlank(message = "not null")
     private String title;
 
     /**
@@ -77,5 +74,4 @@ public class AddDailyPlanRequest {
      */
     @ApiModelProperty("id,Added time transmission space")
     Long planId;
-
 }
