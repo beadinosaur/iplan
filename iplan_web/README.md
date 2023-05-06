@@ -20,7 +20,7 @@ npm run build
 npm run lint
 ```
 ### Interface Address
-地址：[http://10.66.124.200:8081/]
+地址：[http://localhost:8081/]
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).

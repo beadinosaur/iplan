@@ -17,3 +17,7 @@ new Vue({
   router,
   render: h => h(App),
 }).$mount('#app')
+
+//注册全局插槽容器
+import basicBlock from './components/basic-block' // 引入公共插槽文件
+Vue.component('basic-block', basicBlock);

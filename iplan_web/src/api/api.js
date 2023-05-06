@@ -17,3 +17,57 @@ export function register(data){
         data:data
     })
 }
+//add plan
+export function addPlan(data){
+    return service({
+        method:'post',
+        url:'/dailyPlan/saveOrUpdate',
+        data:data
+    })
+}
+
+export function selectPlanDataByTime(data){
+    return service({
+        method:'post',
+        url:'/dailyPlan/getPlanDataByTime',
+        data:data
+    })
+}
+
+export function selectPlanDataByMonth(data){
+    return service({
+        method:'post',
+        url:'/dailyPlan/listByMonthRange',
+        data:data
+    })
+}
+
+export function deleteByPlanId(data){
+    return service({
+        method:'post',
+        url:'/dailyPlan/delete',
+        data:data
+    })
+}
+
+export function pullEmail(){
+    return service({
+        method:'post',
+        url:'/conferenceData/transferEmail'
+    })
+}
+
+export function pullConference(){
+    return service({
+        method:'post',
+        url:'/conferenceData/transferConference'
+    })
+}
+
+export function emailConfig(data){
+    return service({
+        method:'post',
+        url:'/emailConfig/saveOrUpdate',
+        data:data
+    })
+}

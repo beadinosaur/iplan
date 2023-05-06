@@ -19,9 +19,10 @@ export default new Router(
             },
             {
                 path:'/home',//Configuring Routing Paths and Components
+                name:'home',
                 //component: Home
-                //component:()=>import('@/components/Home')//Routing Lazy Loading
-                component:resolve => require(['@/components/Home'],resolve)//Asynchronous components
+                component:()=>import('@/components/Home')//Routing Lazy Loading
+                //component:resolve => require(['@/components/Home'],resolve)//Asynchronous components
             },
             {
                 path:"/register",
