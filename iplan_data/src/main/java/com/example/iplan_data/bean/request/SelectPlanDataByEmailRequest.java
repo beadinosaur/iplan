@@ -4,17 +4,16 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import org.hibernate.validator.constraints.NotBlank;
 
-/**
- * select by hotword
- */
 @Data
-public class SelectPlanDataByHotWordRequest {
-
-    private String userName;
+public class SelectPlanDataByEmailRequest {
 
     /**
-     * hotWords
+     * email
      */
-    @ApiModelProperty("hotWords")
-    private String hotWords;
+    @ApiModelProperty("email")
+    private String email;
+
+    @ApiModelProperty("userName")
+    private String userName;
+
 }

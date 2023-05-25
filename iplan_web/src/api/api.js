@@ -71,3 +71,39 @@ export function emailConfig(data){
         data:data
     })
 }
+
+export function getHotWords(){
+    return service({
+        method:'post',
+        url:'/dailyPlanTitle/getHotWord',
+    })
+}
+
+export function searchByKeyWord(data){
+    return service({
+        method:'post',
+        url:'/dailyPlan/getByHotWords',
+        data:data
+    })
+}
+
+export function selectByEmail(data){
+    return service({
+        method:'post',
+        url:'/dailyPlan/getByEmail',
+        data:data
+    })
+}
+
+
+export function exportPlanList(data){
+    return service({
+        method:'post',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        responseType: 'blob',
+        url:'/export/easyExcelReport',
+        data:data
+    })
+}

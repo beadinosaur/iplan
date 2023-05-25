@@ -19,7 +19,7 @@ server:
 
 mybatis:
   mapper-locations: classpath:mybatis/mapper/*.xml
-  type-aliases-package: com.schedule.getmail.entity
+  type-aliases-package: com.example.iplan_data.entity
   config-location: classpath:mybatis/mybatis-config.xml
 
 logging:

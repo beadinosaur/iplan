@@ -10,5 +10,5 @@ import java.util.List;
  */
 @Data
 public class SelectPlanDataByHotWordsResponse extends BaseResponse {
-    private List<HotWordsPlanDataVo> data;
+    private List<HotWordsPlanDataVo> planData;
 }

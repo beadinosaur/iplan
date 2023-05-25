@@ -48,7 +48,7 @@ public class PlanDataController {
         try {
             List<PlanData> list = planDataService.list(new QueryWrapper<PlanData>().lambda()
                     .eq(!StringUtils.isEmpty(request.getUserName()), PlanData::getUserName, request.getUserName())
-                    .apply("date_format (start_Time,'%Y-%m-%d') = date_format('" + request.getTime() + "','%Y-%m-%d')")
+                    //.apply("date_format (start_Time,'%Y-%m-%d') = date_format('" + request.getTime() + "','%Y-%m-%d')")
                     .orderByDesc(PlanData::getStartTime));
             response.setData(list);
             response.setErrorCode(ErrorCode.SUCCESS);
@@ -157,12 +157,33 @@ public class PlanDataController {
         SelectPlanDataByHotWordsResponse response = new SelectPlanDataByHotWordsResponse();
         try {
             List<HotWordsPlanDataVo> list = planDataService.selectPlanDataByHotWords(request.getHotWords());
-            response.setData(list);
+            list.stream()
+                    .filter(item -> item.getUserName().equals(request.getUserName()));
+            response.setPlanData(list);
             response.setErrorCode(ErrorCode.SUCCESS);
             return response;
         } catch (Exception e) {
             log.error("", e);
             response.setErrorCode(ErrorCode.DB_ERROR);
+        }
+        return response;
+    }
+
+    /**
+     * Query all related hot words according to hot words
+     *
+     * @return
+     */
+    @ApiOperation(value = "select by email", notes = "select by email")
+    @PostMapping(value = "/dailyPlan/getByEmail", produces = "application/json;charset=utf-8")
+    public SelectPlanDataByEmailResponse selectByEmail(@Validated @RequestBody SelectPlanDataByEmailRequest request) {
+        SelectPlanDataByEmailResponse response = new SelectPlanDataByEmailResponse();
+        try {
+            List<PlanData> list = planDataService.selectPlanDataByEmail(request);
+            response.setData(list);
+            return response;
+        } catch (Exception e) {
+            log.error("", e);
         }
         return response;
     }

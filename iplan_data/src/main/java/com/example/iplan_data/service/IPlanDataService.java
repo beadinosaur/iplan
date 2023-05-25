@@ -2,6 +2,7 @@ package com.example.iplan_data.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.example.iplan_data.bean.request.AddDailyPlanRequest;
+import com.example.iplan_data.bean.request.SelectPlanDataByEmailRequest;
 import com.example.iplan_data.entity.PlanData;
 import com.example.iplan_data.entity.vo.HotWordsPlanDataVo;
 import com.example.iplan_data.entity.vo.TimeAxisPlanDataVo;
@@ -28,7 +29,7 @@ public interface IPlanDataService extends IService<PlanData> {
     boolean saveOrUpdate(AddDailyPlanRequest request);
 
     /**
-     * 查询时间轴
+     * selectByTimeRange
      *
      * @param username
      * @param pageIndex
@@ -37,7 +38,7 @@ public interface IPlanDataService extends IService<PlanData> {
     List<TimeAxisPlanDataVo> selectByTimeRange(String username, int pageIndex);
 
     /**
-     * 查询日历程
+     * selectByMonthRange
      *
      * @param username
      * @return
@@ -46,11 +47,19 @@ public interface IPlanDataService extends IService<PlanData> {
 
 
     /**
-     * 根据热词查询
+     * selectPlanDataByHotWords
      *
      * @param words
      * @return
      */
     List<HotWordsPlanDataVo> selectPlanDataByHotWords(String words);
+
+    /**
+     * selectPlanDataByEmail
+     *
+     * @param
+     * @return
+     */
+    List<PlanData> selectPlanDataByEmail(SelectPlanDataByEmailRequest request);
 
 }

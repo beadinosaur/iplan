@@ -189,6 +189,8 @@ public class ConferenceDataServiceImpl extends ServiceImpl<ConferenceDataMapper,
                 conferenceData.setContent(body);
                 //Insert start time (temporarily replaced by receipt time)
                 conferenceData.setStartTime(item.getDateTimeReceived());
+                conferenceData.setEndTime(item.getDateTimeReceived());
+                conferenceData.setPosition("见详情，或未设置");
                 //7.Insert creation time
                 conferenceData.setCreateTime(time);
                 //8.Insert message type

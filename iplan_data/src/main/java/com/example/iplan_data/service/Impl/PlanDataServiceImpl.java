@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 
 import com.example.iplan_data.bean.request.AddDailyPlanRequest;
+import com.example.iplan_data.bean.request.SelectPlanDataByEmailRequest;
 import com.example.iplan_data.contentSimilarity.tokenizer.Tokenizer;
 import com.example.iplan_data.contentSimilarity.tokenizer.Word;
 import com.example.iplan_data.entity.PlanData;
@@ -128,7 +129,7 @@ public class PlanDataServiceImpl extends ServiceImpl<PlanDataMapper, PlanData> i
                 .eq(!StringUtils.isEmpty(username), PlanData::getUserName, username)
                 .ne(PlanData::getSource, "Message")
                 .apply("date_format (start_Time,'%Y-%m-%d') >= date_format('" + first + "','%Y-%m-%d')")
-                .apply("date_format (start_Time,'%Y-%m-%d') <= date_format('" + last + "','%Y-%m-%d')")
+                .apply("date_format (end_Time,'%Y-%m-%d') <= date_format('" + last + "','%Y-%m-%d')")
                 .orderByAsc(PlanData::getStartTime)
         );
         log.info("planData selectByMonthRange end! list.size {}", list.size());
@@ -219,11 +220,11 @@ public class PlanDataServiceImpl extends ServiceImpl<PlanDataMapper, PlanData> i
         //Query schedule by hot word and userName
         for (HotWordsVo h : wordsList) {
             HotWordsPlanDataVo hotWordsPlanData = new HotWordsPlanDataVo();
-            //Gets the user name stored in wordsList
+            //Gets the username stored in wordsList
             hotWordsPlanData.setUserName(h.getUserName());
             //Gets the number of users stored in wordsList
             hotWordsPlanData.setSum(h.getTitleCount());
-            //According to the user name in wordsList and the calendar corresponding to the hot word fuzzy query topic, and sorted by the start time in descending order
+            //According to the username in wordsList and the calendar corresponding to the hot word fuzzy query topic, and sorted by the start time in descending order
             List<PlanData> planData = planDataMapper.selectList(new QueryWrapper<PlanData>().lambda()
                     .eq(PlanData::getUserName, h.getUserName())
                     .like(PlanData::getTitle, words)
@@ -234,5 +235,21 @@ public class PlanDataServiceImpl extends ServiceImpl<PlanDataMapper, PlanData> i
         }
         log.info("planData selectPlanDataByHotWords end! list {}", list);
         return list;
+    }
+
+
+    /**
+     * Query by email
+     *
+     * @param
+     * @return
+     */
+    @Override
+    public List<PlanData> selectPlanDataByEmail(SelectPlanDataByEmailRequest request){
+        List<PlanData> planData = planDataMapper.selectList(new QueryWrapper<PlanData>().lambda()
+                .eq(PlanData::getUserName, request.getUserName())
+                .like(PlanData::getSender, request.getEmail())
+                .orderByDesc(PlanData::getStartTime));
+        return planData;
     }
 }

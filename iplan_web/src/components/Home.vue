@@ -7,36 +7,48 @@
           </full-calendar>
         </div>
       </el-col>
-      <el-col :span="2">
-        <div class="back-tip">
-          <el-button class="back-home" type="primary" @click="backhome()">退出登录</el-button>
+      <el-col :span="4" class="custom-background">
+        <div class="button-group">
+          <el-button type="primary">P</el-button>
+          <el-button type="success">L</el-button>
+          <el-button type="warning">A</el-button>
+          <el-button type="danger">N</el-button>
         </div>
-        <div class="tag-tip">
-          <el-tag size="small" effect="dark" style="height: 50px; width:100px; background-color: orangered;">进行中</el-tag>
+        <div class="back-tip-one" style="display: flex; flex-direction: row; align-items: center;">
+          <el-button class="pull-data" style="width: 50%;" type="primary" @click="pullData()">同步数据</el-button>
+          <el-button class="bconfig-email1" style="width: 50%;" type="primary" @click="configemail()">邮箱配置</el-button>
         </div>
-        <div class="tag-tip">
-          <el-tag type="warning" effect="dark" style="height: 50px; width:100px; background-color: green;">已完成</el-tag>
+        <div class="back-tip" style="display: flex; flex-direction: row; align-items: center;  flex-grow: 0.8;">
+          <el-button style="width: 30%;" type="primary" @click="handleSearchClick">查询</el-button>
+          <el-select style="width: 70%;" v-model="searchText" placeholder="输入关键词" filterable allow-create>
+            <el-option
+              v-for="(option, index) in wordOptions"
+              :key="index"
+              :label="option.label"
+              :value="option.value"
+            />
+          </el-select>
         </div>
-      </el-col>
-      <el-col :span="2">
-        <div class="back-tip">
-          <el-button class="pull-data" type="primary" @click="pullData()">同步邮箱</el-button>
+        <div class="back-tip" style="display: flex; flex-direction: row; align-items: center;  flex-grow: 0.8;">
+          <el-button style="width: 30%;" @click="searchByEmail" class="search-button">查询</el-button>
+          <input style="width: 70%;" type="text" v-model="keyemail" placeholder="输入邮箱"  class="search-box light-placeholder" >
         </div>
-        <div class="tag-tip">
-          <el-button class="bconfig-email1" type="primary" @click="configemail()">邮箱配置</el-button>
+        <div class="back-tip" style="display: flex; flex-direction: row; align-items: center;  flex-grow: 0.8;">
+          <el-button class="bconfig-email1" style="width: 50%;" type="primary" @click="getplanList()">导出日程</el-button>
+          <el-button class="back-home" style="width: 50%;" type="primary" @click="backhome()">退出登录</el-button>
         </div>
       </el-col>
     </el-row>
     <!--add plan start-->
-    <el-dialog title="会议新增" :visible.sync="dialogVisible" :before-close="close" width="45%">
+    <el-dialog title="新增日程" :visible.sync="dialogVisible" :before-close="close" width="45%">
       <el-form :model="form" :rules="rules" ref="form" label-width="120px" size="small" class="demo-ruleForm">
-        <el-form-item label="会议主题" prop="title">
+        <el-form-item label="日程主题" prop="title">
           <el-input v-model="form.title"></el-input>
         </el-form-item>
-        <el-form-item label="会议地点" prop="position">
+        <el-form-item label="地点" prop="position">
           <el-input v-model="form.position"></el-input>
         </el-form-item>
-        <el-form-item label="会议开始时间" required>
+        <el-form-item label="开始时间" required>
           <el-col :span="11">
             <el-form-item prop="startDate" style="margin-bottom: 0">
               <el-date-picker type="date" format="yyyy-MM-dd" value-format="yyyy-MM-dd" placeholder="选择日期"
@@ -56,7 +68,7 @@
             </el-form-item>
           </el-col>
         </el-form-item>
-        <el-form-item label="会议结束时间" required>
+        <el-form-item label="结束时间" required>
           <el-col :span="11">
             <el-form-item prop="endDate" style="margin-bottom: 0">
               <el-date-picker type="date" format="yyyy-MM-dd" value-format="yyyy-MM-dd" placeholder="选择日期"
@@ -77,7 +89,7 @@
             </el-form-item>
           </el-col>
         </el-form-item>
-        <el-form-item label="详情" prop="desc">
+        <el-form-item label="详情" prop="content">
           <el-input type="textarea" v-model="form.content"></el-input>
         </el-form-item>
         <el-form-item>
@@ -147,6 +159,12 @@ import { deleteByPlanId } from '@/api/api.js';
 import { pullEmail } from '@/api/api.js';
 import { pullConference } from '@/api/api.js';
 import { emailConfig } from '@/api/api.js';
+import { exportPlanList } from '@/api/api.js';
+import { searchByKeyWord } from '@/api/api.js';
+import { selectByEmail } from '@/api/api.js';
+import { getHotWords } from '@/api/api.js';
+
+
 import _ from 'lodash';
 // import calendar
 import FullCalendar from "@fullcalendar/vue";
@@ -165,7 +183,9 @@ export default {
     return {
       activeNum: 0,
       dialogVisible: false,
-      meetingRoomList: [],
+      searchText: '', // 搜索框的输入值
+      keyemail:'',//
+      wordOptions: [], // 下拉框的选项数组,
       subList: [],
       WordTList: [
         {
@@ -196,6 +216,17 @@ export default {
         userName: '',
         time: ''
       },
+      formexpot: {
+        userName: ''
+      },
+      formword: {
+        userName: '',
+        hotWords: ''
+      },
+      formsearchemail: {
+        userName: '',
+        email: ''
+      },
       formDelete: {
         userName: '',
         planId: ''
@@ -214,10 +245,10 @@ export default {
       },
       rules: {
         title: [
-          { required: true, message: '请输入会议主题', trigger: 'blur' }
+          { required: true, message: '请输入主题', trigger: 'blur' }
         ],
         position: [
-          { required: true, message: '请填写会议地址', trigger: 'change' }
+          { required: true, message: '请填写地址', trigger: 'change' }
         ],
         startDate: [
           { required: true, message: '请选择开始日期', trigger: 'change' }
@@ -232,7 +263,7 @@ export default {
           { required: true, message: '请选择结束时间', trigger: 'change' }
         ],
         content: [
-          { required: true, message: '请填写会议详情', trigger: 'blur' }
+          { required: true, message: '请填写详情', trigger: 'blur' }
         ],
       },
       rules1: {
@@ -355,6 +386,7 @@ export default {
     // submit plan data
     submitForm(form) {
       this.$refs[form].validate((valid) => {
+        console.info(form,"提交---------------")
         if (valid) {
           this.form.startTime = `${this.form.startDate} ${this.form.startTime}:00`;
           this.form.endTime = `${this.form.endDate} ${this.form.endTime}:00`;
@@ -391,6 +423,7 @@ export default {
     pullData() {
       pullEmail();
       pullConference();
+      this.getReservationList();
     },
 
     //search plandata
@@ -413,6 +446,75 @@ export default {
       });
       this.calendarOptions.events = newArr;
     },
+
+    //search by eamil
+    searchByEmail() {
+      let newArr = [];
+      this.formsearchemail.email = this.keyemail;
+      this.formsearchemail.userName = getToken("userName");
+      selectByEmail(this.formsearchemail).then((item) => {
+        this.subList = item.data.data;
+        item.data.data.forEach((res) => {
+          newArr.push({
+            start: this.dealWithTime(res.startTime),
+            end: this.addDate(this.dealWithTime(res.endTime), 1),
+            color: "green",
+            id: res.planId,
+            title: `${this.getTitle(res.startTime, res.endTime)} ${res.title}`,
+          })
+        });
+      });
+      this.calendarOptions.events = newArr;
+      this.keyemail = ''
+    },
+
+    //export plandata
+    getplanList() {
+      this.formexpot.userName = getToken('userName')
+      exportPlanList(this.formexpot).then(res => {
+          if(res){
+            let blob = new Blob([res.request.response], { type: res.headers['content-type'] });
+            let url = window.URL.createObjectURL(blob);
+            let a = document.createElement('a');
+            document.body.appendChild(a);
+            let fileName = res.headers['content-disposition'].split(';')[1].split('=')[1];
+            if (fileName[0] == '"') {
+                fileName = fileName.split('"')[1];
+            }
+            a.href = url;
+            a.download = fileName;
+            a.click();
+            window.URL.revokeObjectURL(url);
+            document.body.removeChild(a);
+            }
+      })   
+    },
+
+    
+    // searchByKeyWord
+    handleSearchClick() {
+      let newArr = [];
+      this.formword.userName = getToken('userName');
+      this.formword.hotWords=this.searchText;
+      console.info(this.searchText,"this.searchText-----------")
+      searchByKeyWord(this.formword).then((item) => {
+        item.data.planData.forEach((res) => {
+          this.subList =  res.data;
+          res.data.forEach((resT) => {
+              newArr.push({
+              start: this.dealWithTime(resT.startTime),
+              end: this.addDate(this.dealWithTime(resT.endTime), 1),
+              color: "green",
+              id: resT.planId,
+              title: `${this.getTitle(resT.startTime, resT.endTime)} ${resT.title}`,
+            })
+          });
+        });
+      });
+      this.calendarOptions.events = newArr;
+      this.searchText = ''
+    },
+
 
     addDate(date, days) {
       var d = new Date(date);
@@ -491,6 +593,19 @@ export default {
       this.dialogVisible = false;
       this.$refs['form'].resetFields();
     },
+  },
+  async created() {
+
+    const hotwordsObj = await getHotWords();
+    const hotwords = hotwordsObj.data.data;
+
+    this.wordOptions = hotwords.slice(0, 10).map((word, index) => ({
+      label: word.words,
+      value: word.words
+    }));
+    // if (this.wordOptions.length > 0) {
+    //   this.searchText = this.wordOptions[0].value;
+    // }
   }
 }
 </script>
